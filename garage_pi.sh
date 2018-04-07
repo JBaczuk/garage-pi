@@ -15,6 +15,8 @@ PIDNAME=garage_pi/garage_pi.pid
 PIDFILE=/var/run/garage_pi/garage_pi.pid
 LOGFILE=/var/log/garage_pi/garage_pi.log
 
+sudo mkdir /var/run/garage_pi/
+
 start() {
   if [ -f /var/run/$PIDNAME ] && kill -0 $(cat /var/run/$PIDNAME); then
     echo 'Service already running' >&2
