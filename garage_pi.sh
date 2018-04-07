@@ -8,7 +8,7 @@
 # Description:       Service to start garage_pi server
 ### END INIT INFO
 
-SCRIPT=python /home/pi/garage-pi/server.py
+SCRIPT="python /home/pi/garage-pi/server.py"
 RUNAS=pi
 
 PIDNAME=garage_pi/garage_pi.pid
@@ -22,6 +22,7 @@ start() {
   fi
   echo 'Starting service…' >&2
   local CMD="$SCRIPT &> \"$LOGFILE\" & echo \$!"
+  echo "$CMD"
   su -c "$CMD" $RUNAS > "$PIDFILE"
   echo 'Service started' >&2
 }
