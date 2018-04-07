@@ -8,7 +8,7 @@
 # Description:       Service to start garage_pi server
 ### END INIT INFO
 
-SCRIPT=python /home/pi/garage_pi/server.py
+SCRIPT=python /home/pi/garage-pi/server.py
 RUNAS=pi
 
 PIDFILE=/var/run/garage_pi.pid

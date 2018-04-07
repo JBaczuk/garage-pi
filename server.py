@@ -11,7 +11,7 @@ class Garage(Resource):
         g.pushGarageBtn()
         return "result: success"
     def get(self):
-        return "result: success"
+        return "result: error - must send a post request"
         
 api.add_resource(Garage, '/garage') # Route_1
 
