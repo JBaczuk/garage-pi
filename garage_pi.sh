@@ -11,8 +11,9 @@
 SCRIPT=python /home/pi/garage-pi/server.py
 RUNAS=pi
 
-PIDFILE=/var/run/garage_pi.pid
-LOGFILE=/var/log/garage_pi.log
+PIDNAME=garage_pi.pid
+PIDFILE=/var/run/garage_pi/garage_pi.pid
+LOGFILE=/var/log/garage_pi/garage_pi.log
 
 start() {
   if [ -f /var/run/$PIDNAME ] && kill -0 $(cat /var/run/$PIDNAME); then
