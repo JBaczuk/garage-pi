@@ -11,7 +11,7 @@
 SCRIPT=python /home/pi/garage-pi/server.py
 RUNAS=pi
 
-PIDNAME=garage_pi.pid
+PIDNAME=garage_pi/garage_pi.pid
 PIDFILE=/var/run/garage_pi/garage_pi.pid
 LOGFILE=/var/log/garage_pi/garage_pi.log
 
