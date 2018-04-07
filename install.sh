@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Install init.d service
-sudo cp garage_py.sh /etc/init.d/garage_py
+sudo cp garage_pi.sh /etc/init.d/garage_pi
 
 # Make it executable
-sudo chmod +x /etc/init.d/garage_py
+sudo chmod +x /etc/init.d/garage_pi
 
 # Make it run at boot time
-sudo update-rc.d garage_py defaults
+sudo update-rc.d garage_pi defaults
 
 # Start the service after installation
-sudo service garage_py start
+sudo service garage_pi start
