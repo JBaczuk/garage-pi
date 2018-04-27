@@ -1,42 +1,28 @@
-#!/bin/sh
+#!/bin/bash
 ### BEGIN INIT INFO
 # Provides:          garage_pi
-# Required-Start:    $local_fs $network $named $time $syslog
-# Required-Stop:     $local_fs $network $named $time $syslog
+# Required-Start:    $all
+# Required-Stop:     
 # Default-Start:     2 3 4 5
-# Default-Stop:      0 1 6
+# Default-Stop:      
 # Description:       Service to start garage_pi server
 ### END INIT INFO
 
-SCRIPT="python /home/pi/garage-pi/server.py"
-RUNAS=pi
-
-PIDNAME=garage_pi/garage_pi.pid
-PIDFILE=/var/run/garage_pi/garage_pi.pid
-LOGFILE=/var/log/garage_pi/garage_pi.log
-
-sudo mkdir /var/run/garage_pi/
-
 start() {
-  if [ -f /var/run/$PIDNAME ] && kill -0 $(cat /var/run/$PIDNAME); then
-    echo 'Service already running' >&2
-    return 1
+  echo "Starting Garage Pi..." ; 
+
+  if [ -z "$(pgrep server)" ]
+    then
+      /var/opt/garage_pi/./server &
+      echo "Garage Pi started!"
+  else
+    echo "Already Running" ;
   fi
-  echo 'Starting service…' >&2
-  local CMD="$SCRIPT &> \"$LOGFILE\" & echo \$!"
-  echo "$CMD"
-  su -c "$CMD" $RUNAS > "$PIDFILE"
-  echo 'Service started' >&2
 }
 
-stop() {
-  if [ ! -f "$PIDFILE" ] || ! kill -0 $(cat "$PIDFILE"); then
-    echo 'Service not running' >&2
-    return 1
-  fi
-  echo 'Stopping service…' >&2
-  kill -15 $(cat "$PIDFILE") && rm -f "$PIDFILE"
-  echo 'Service stopped' >&2
+stop(){
+  echo "Stopping garage pi";
+  pkill -f ./server
 }
 
 uninstall() {
@@ -45,8 +31,6 @@ uninstall() {
   read SURE
   if [ "$SURE" = "yes" ]; then
     stop
-    rm -f "$PIDFILE"
-    echo "Notice: log file is not be removed: '$LOGFILE'" >&2
     update-rc.d -f garage_pi remove
     rm -fv "$0"
   fi
