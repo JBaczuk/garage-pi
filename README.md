@@ -1,6 +1,6 @@
 # Garage Pi
 
-Control your garage with a raspberry pi.  This assumes you have a relay connected between GPIO BCM22 and the two toggle lines on your garage opener.  Message me if you need help finding one.  This is a simple API that toggles a GPIO and runs as a service at boot.
+Control your garage with a raspberry pi.  This assumes you have a relay connected between GPIO BCM22 and the button wire on your garage opener.  Message me if you need help finding one.  This is a simple API that toggles a GPIO and runs as a service at boot.
 
 ## Installation
 ```
