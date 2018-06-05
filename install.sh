@@ -4,6 +4,7 @@
 sudo rm /etc/init.d/garage_pi
 sudo cp garage_pi.sh /etc/init.d/garage_pi
 sudo mkdir /var/opt/garage_pi
+pyinstaller --onefile /home/pi/garage-pi/server.py
 sudo cp /home/pi/garage-pi/dist/server /var/opt/garage_pi/server
 sudo chown pi:pi /var/opt/garage_pi
 

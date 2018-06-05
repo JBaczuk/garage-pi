@@ -4,6 +4,8 @@ Control your garage with a raspberry pi.  This assumes you have a relay connecte
 
 ## Installation
 ```
+sudo apt-get install python-dev
+sudo pip install pyinstaller
 git clone https://github.com/JBaczuk/garage-pi.git
 cd garage-pi
 sudo ./install.sh
